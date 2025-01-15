@@ -1,34 +1,43 @@
+// Elements
+const loginPage = document.getElementById('loginPage');
+const mainPage = document.getElementById('mainPage');
+const loginForm = document.getElementById('loginForm');
+const statusForm = document.getElementById('statusForm');
+const statusFeed = document.getElementById('statusFeed');
+const logoutButton = document.getElementById('logoutButton');
 
+// Dummy user credentials
+const USERNAME = 'user';
+const PASSWORD = '1234';
 
-document.getElementById('postBtn').addEventListener('click', function () {
-    const statusInput = document.getElementById('statusInput');
-    const postContainer = document.getElementById('postContainer');
+// Handle login
+loginForm.addEventListener('submit', function (e) {
+  e.preventDefault();
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('password').value;
 
-    if (statusInput.value.trim() !== "") {
-        // Create post element
-        const post = document.createElement('div');
-        post.className = 'post';
+  if (username === USERNAME && password === PASSWORD) {
+    loginPage.style.display = 'none';
+    mainPage.style.display = 'block';
+  } else {
+    alert('Invalid login details');
+  }
+});
 
-        // Add status text
-        const statusText = document.createElement('p');
-        statusText.textContent = statusInput.value;
+// Handle posting status
+statusForm.addEventListener('submit', function (e) {
+  e.preventDefault();
+  const statusText = document.getElementById('statusInput').value;
+  if (statusText) {
+    const newStatus = document.createElement('p');
+    newStatus.textContent = statusText;
+    statusFeed.appendChild(newStatus);
+    document.getElementById('statusInput').value = ''; // Clear input
+  }
+});
 
-        // Create delete button
-        const deleteBtn = document.createElement('button');
-        deleteBtn.textContent = 'Delete';
-        deleteBtn.className = 'delete-btn';
-        deleteBtn.addEventListener('click', function () {
-            postContainer.removeChild(post);
-        });
-
-        // Append status text and delete button to post
-        post.appendChild(statusText);
-        post.appendChild(deleteBtn);
-
-        // Append post to container
-        postContainer.appendChild(post);
-
-        // Clear input
-        statusInput.value = "";
-    }
+// Handle logout
+logoutButton.addEventListener('click', function () {
+  loginPage.style.display = 'block';
+  mainPage.style.display = 'none';
 });

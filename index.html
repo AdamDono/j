@@ -16,16 +16,35 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <div class="container">
-            <h1>My Mini Facebook</h1>
-            <div class="post-section">
-                <textarea id="statusInput" placeholder="What's on your mind?" rows="4"></textarea>
-                <button id="postBtn">Post</button>
-            </div>
-            <div id="postContainer" class="posts"></div>
-        </div>
-    
-        <script src="script.js"></script>
+<!-- Login Page -->
+<div id="loginPage">
+    <h2>Login</h2>
+    <form id="loginForm">
+      <input type="text" id="username" placeholder="Enter username" required />
+      <input type="password" id="password" placeholder="Enter password" required />
+      <button type="submit">Login</button>
+    </form>
+  </div>
+  
+  <!-- Main Page -->
+  <div id="mainPage" style="display: none;">
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Profile</a>
+      <button id="logoutButton">Logout</button>
+    </nav>
+  
+    <h2>Post a Status</h2>
+    <form id="statusForm">
+      <textarea id="statusInput" placeholder="What's on your mind?" required></textarea>
+      <button type="submit">Post</button>
+    </form>
+  
+    <div id="statusFeed">
+      <h3>Status Feed</h3>
+    </div>
+  </div>
+  
     </body>
     </html>
     
